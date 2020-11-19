@@ -3,6 +3,7 @@ package com.ea_account_codelab;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +26,13 @@ public class MainActivity extends AppCompatActivity {
     TextView loginDesc;
     Button loginButton;
     AuthHuaweiId huaweiAccount;
+
+    @SuppressLint("ResourceType")
+    public void setHuaweiAccount(AuthHuaweiId huaweiAccount) {
+        this.huaweiAccount = huaweiAccount;
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,11 +81,10 @@ public class MainActivity extends AppCompatActivity {
             if (authHuaweiIdTask.isSuccessful()) {
 
                 huaweiAccount = authHuaweiIdTask.getResult();
-                loginDesc.setText(huaweiAccount.getDisplayName());
+                loginDesc.setText(huaweiAccount.getEmail());
                 loginButton.setText(R.string.logout);
 
             } else {
-
                 Log.e("TAG", "sign in failed : " +((ApiException)authHuaweiIdTask.getException()).getStatusCode());
             }
         }
