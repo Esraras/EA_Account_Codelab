@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">EA_Account_Codelab</string>
+    <string name="please_login">Lütfen giriş yapınız</string>
+    <string name="login">Huawei ile giriş yap</string>
+</resources>
